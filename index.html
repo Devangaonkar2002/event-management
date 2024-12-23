@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Event Management Dashboard</h1>
+        <nav class="nav nav-pills mb-4">
+            <a class="nav-link active" href="#events" data-bs-toggle="pill">Event Management</a>
+            <a class="nav-link" href="#attendees" data-bs-toggle="pill">Attendee Management</a>
+            <a class="nav-link" href="#tasks" data-bs-toggle="pill">Task Tracker</a>
+        </nav>
+        <div class="tab-content mt-4">
+            <!-- Event Management -->
+            <div class="tab-pane fade show active" id="events">
+                <h3 class="mb-3">Manage Events</h3>
+                <form id="event-form" class="mb-4 shadow-sm p-4 bg-light rounded">
+                    <div class="mb-3">
+                        <label for="event-name" class="form-label">Event Name</label>
+                        <input type="text" id="event-name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="event-description" class="form-label">Description</label>
+                        <textarea id="event-description" class="form-control" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="event-location" class="form-label">Location</label>
+                        <input type="text" id="event-location" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="event-date" class="form-label">Date</label>
+                        <input type="date" id="event-date" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Add Event</button>
+                </form>
+                <h4 class="mb-3">All Events</h4>
+                <ul id="event-list" class="list-group shadow-sm"></ul>
+            </div>
+
+            <!-- Attendee Management -->
+            <div class="tab-pane fade" id="attendees">
+                <h3 class="mb-3">Manage Attendees</h3>
+                <form id="attendee-form" class="mb-4 shadow-sm p-4 bg-light rounded">
+                    <div class="mb-3">
+                        <label for="attendee-name" class="form-label">Name</label>
+                        <input type="text" id="attendee-name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="attendee-email" class="form-label">Email</label>
+                        <input type="email" id="attendee-email" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="attendee-event" class="form-label">Event</label>
+                        <select id="attendee-event" class="form-select" required></select>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Add Attendee</button>
+                </form>
+                <h4 class="mb-3">All Attendees</h4>
+                <ul id="attendee-list" class="list-group shadow-sm"></ul>
+            </div>
+
+            <!-- Task Tracker -->
+            <div class="tab-pane fade" id="tasks">
+                <h3 class="mb-3">Task Tracker</h3>
+                <form id="task-form" class="mb-4 shadow-sm p-4 bg-light rounded">
+                    <div class="mb-3">
+                        <label for="task-name" class="form-label">Task Name</label>
+                        <input type="text" id="task-name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="task-deadline" class="form-label">Deadline</label>
+                        <input type="date" id="task-deadline" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="task-event" class="form-label">Event</label>
+                        <select id="task-event" class="form-select" required></select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="task-assignee" class="form-label">Assignee</label>
+                        <input type="text" id="task-assignee" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-warning w-100">Add Task</button>
+                </form>
+                <div class="mb-3">
+                    <label for="task-event-filter" class="form-label">Filter by Event</label>
+                    <select id="task-event-filter" class="form-select"></select>
+                </div>
+                <h4 class="mb-3">Tasks</h4>
+                <ul id="task-list" class="list-group shadow-sm"></ul>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
