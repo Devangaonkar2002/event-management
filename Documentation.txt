@@ -1,0 +1,60 @@
+Step 1: Set Up Your Development Environment
+       Install Python: Download and install Python 3.9+ from python.org.
+       Install MySQL: Download and install MySQL Server from mysql.com.
+Step 2: Create the Database
+       Create the Database and Tables:
+       Execute the following SQL commands to set up the database schema:
+CREATE DATABASE EventManagement;
+
+USE EventManagement;
+
+CREATE TABLE Events (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    location VARCHAR(255) NOT NULL,
+    date DATE NOT NULL
+);
+
+CREATE TABLE Attendees (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    event_id INT,
+    FOREIGN KEY (event_id) REFERENCES Events(id) ON DELETE CASCADE
+);
+
+CREATE TABLE Tasks (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    deadline DATE NOT NULL,
+    status ENUM('Pending', 'Completed') DEFAULT 'Pending',
+    event_id INT,
+    assignee_id INT,
+    FOREIGN KEY (event_id) REFERENCES Events(id) ON DELETE CASCADE,
+    FOREIGN KEY (assignee_id) REFERENCES Attendees(id) ON DELETE SET NULL
+);
+
+
+Step 3: Backend Setup
+      Install the required Python libraries
+      pip install fastapi sqlalchemy pymysql uvicorn pydantic
+      pip install python-multipart # For future file upload handling (if needed)
+      pip install fastapi[all]  # Includes CORS middleware
+
+Run the Backend:
+Start the FastAPI server
+uvicorn main:app --reload
+
+
+Step 4: Test the Application
+Visit the Web App:
+
+Open index.html in your browser or access it via the local server.
+Perform Operations:
+
+Use the "Event Management" tab to create, update, or delete events.
+Use the "Attendee Management" tab to add attendees to events.
+Use the "Task Tracker" tab to add and manage tasks.
+
+
